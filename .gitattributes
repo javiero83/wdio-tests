@@ -1,0 +1,23 @@
+# Normaliza finales de línea para todos los archivos de texto
+* text=auto
+
+# Usa siempre LF en archivos de código fuente
+*.ts text eol=lf
+*.js text eol=lf
+*.json text eol=lf
+*.md text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+*.html text eol=lf
+*.css text eol=lf
+*.scss text eol=lf
+
+# Binarios o generados (no tocar finales de línea)
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.ico binary
+*.pdf binary
+*.zip binary
+*.gz binary
+allure-report/* text eol=lf
