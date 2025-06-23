@@ -5,3 +5,4 @@ allure-report/
 baseline/
 screenshots/
 .env
+allure-results/

@@ -1,4 +1,6 @@
-export const config: WebdriverIO.Config = {
+import type { Options } from '@wdio/types'
+//@ts-ignore
+export const config: Options.Testrunner = {
     //
     // ====================
     // Runner Configuration
@@ -23,7 +25,7 @@ export const config: WebdriverIO.Config = {
     // of the config file unless it's absolute.
     //
     specs: [
-        // ToDo: define location for spec files here
+        './test/specs/**/*.ts'
     ],
     // Patterns to exclude.
     exclude: [
@@ -86,7 +88,7 @@ export const config: WebdriverIO.Config = {
     // with `/`, the base url gets prepended, not including the path portion of your baseUrl.
     // If your `url` parameter starts without a scheme or `/` (like `some/path`), the base url
     // gets prepended directly.
-    // baseUrl: 'http://localhost:8080',
+    baseUrl: 'https://www.saucedemo.com',
     //
     // Default timeout for all waitFor* commands.
     waitforTimeout: 10000,
@@ -102,7 +104,7 @@ export const config: WebdriverIO.Config = {
     // Services take over a specific job you don't want to take care of. They enhance
     // your test setup with almost no effort. Unlike plugins, they don't add new
     // commands. Instead, they hook themselves up into the test process.
-    // services: [],
+    services: ['devtools'],
     //
     // Framework you want to run your specs with.
     // The following are supported: Mocha, Jasmine, and Cucumber
@@ -228,7 +230,7 @@ export const config: WebdriverIO.Config = {
      * @param {boolean} result.passed    true if test has passed, otherwise false
      * @param {object}  result.retries   information about spec related retries, e.g. `{ attempts: 0, limit: 0 }`
      */
-    afterTest: async function(test, context, { error, result, duration, passed, retries }) {
+    afterTest: async (test, context, { passed })=> {
         if (!passed) {
             await browser.takeScreenshot();
         }

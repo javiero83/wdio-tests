@@ -10,12 +10,14 @@
         "types": [
             "node",
             "@wdio/globals/types",
-            "expect-webdriverio"
+            "expect-webdriverio",
+            "@wdio/mocha-framework"
         ],
+        "allowJs": false,
         "skipLibCheck": true,
         "noEmit": true,
         "esModuleInterop": true,
-        "allowImportingTsExtensions": true,
+        "allowImportingTsExtensions": false,
         "resolveJsonModule": true,
         "isolatedModules": true,
         "strict": true,
@@ -24,7 +26,7 @@
         "noFallthroughCasesInSwitch": true
     },
     "include": [
-        "test",
+        "test/**/*.ts",
         "wdio.conf.ts"
     ]
 }
