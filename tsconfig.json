@@ -18,7 +18,7 @@
         "noEmit": true,
         "esModuleInterop": true,
         "allowImportingTsExtensions": false,
-        "resolveJsonModule": true,
+        "resolveJsonModule": true, //ts permite importar json con esta bandera activa
         "isolatedModules": true,
         "strict": true,
         "noUnusedLocals": true,
