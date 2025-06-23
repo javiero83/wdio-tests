@@ -1,3 +1,4 @@
+const isHeadless = process.env.HEADLESS === 'true';
 //import type { Options } from '@wdio/types'
 //@ts-ignore
 export const config: WebdriverIO.Config = {
@@ -54,7 +55,12 @@ export const config: WebdriverIO.Config = {
     // https://saucelabs.com/platform/platform-configurator
     //
     capabilities: [{
-        browserName: 'chrome'
+        browserName: 'chrome',
+        'goog:chromeOptions':{
+            args:[
+                ...(isHeadless ? ['--headless', '--disable-gpu', '--window-size=1280,800'] : [])
+            ]
+        }
     }],
 
     //
