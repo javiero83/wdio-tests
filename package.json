@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "npx wdio run wdio.conf.ts",
+    "test:Headless":"set HEADLESS=true && npx wdio run wdio.conf.ts",
     "allureReport": "allure generate --clean allure-results && allure open"
   },
   "keywords": [],
