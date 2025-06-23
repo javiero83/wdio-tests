@@ -65,3 +65,18 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./allure-report
           enable_jekyll: false
+
+      - name: Comment with Allure Report URL
+        if: always()
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const runUrl = process.env.GITHUB_SERVER_URL + '/' + process.env.GITHUB_REPOSITORY + '/actions/runs/' + process.env.GITHUB_RUN_ID;
+            const reportUrl = 'https://javiero83.github.io/wdio-tests/';
+            await github.rest.actions.createWorkflowRunComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              run_id: parseInt(process.env.GITHUB_RUN_ID),
+              body: `✅ Allure Report publicado: [Abrir reporte](${reportUrl})\n\n🔗 [Detalles del run](${runUrl})`
+            });
