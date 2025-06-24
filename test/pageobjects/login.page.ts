@@ -11,6 +11,9 @@ export class LoginPage{
     private get loginButton(){
         return $('#login-button');
     }
+    public get errorLoginMessage(){
+        return $("h3[data-test='error']");
+    }
 
 
 
